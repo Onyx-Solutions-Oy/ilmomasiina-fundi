@@ -1,8 +1,8 @@
 /* eslint-disable no-await-in-loop */
 import { FastifyReply, FastifyRequest } from 'fastify';
-import sendSignupConfirmationMail from 'src/mail/signupConfirmation';
-import { Signup } from 'src/models/signup';
 
+import sendSignupConfirmationMail from '../../mail/signupConfirmation';
+import { Signup } from '../../models/signup';
 import { NoSuchSignup } from './errors';
 
 /** Requires admin authentication */
