@@ -27,7 +27,7 @@ jobs:
   docker:
     name: Push Docker image to GitHub Packages
     needs: lint
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: read
