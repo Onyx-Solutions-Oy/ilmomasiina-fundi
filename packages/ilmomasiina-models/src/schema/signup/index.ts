@@ -28,6 +28,11 @@ export const signupUpdateBody = Type.Partial(Type.Intersect([
   }),
 ]));
 
+/** Request body for editing an existing signup. */
+export const signupResendEmailsBody = Type.Object({
+  ids: Type.Array(signupID),
+});
+
 /** Response schema for successfully editing a signup. */
 export const signupUpdateResponse = signupIdentity;
 
