@@ -203,7 +203,7 @@ async function setupAdminRoutes(
         body: schema.signupResendEmailsBody,
         response: {
           ...errorResponses,
-          204: {}
+          204: {},
         },
       },
     },

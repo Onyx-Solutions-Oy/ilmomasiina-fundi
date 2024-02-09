@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 
 import { Button, Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 import {
   convertSignupsToCSV,
@@ -15,7 +16,6 @@ import { useTypedDispatch, useTypedSelector } from '../../../store/reducers';
 import CSVLink, { CSVOptions } from './CSVLink';
 
 import '../Editor.scss';
-import { toast } from 'react-toastify';
 
 type SignupProps = {
   position: number;
@@ -95,7 +95,7 @@ const SignupsTab = () => {
         bodyRef.current!.querySelectorAll('input[name="action-box"]:checked'),
       ).map((el) => el.id);
 
-      if(ids.length === 0) {
+      if (ids.length === 0) {
         toast.error(t('editor.signups.action.noSelection'));
         return;
       }
@@ -107,7 +107,7 @@ const SignupsTab = () => {
           success: t('editor.signups.action.resendConfirmaton.success'),
           error: t('editor.signups.action.resendConfirmaton.error'),
         },
-      )
+      );
     }
   });
 
@@ -124,7 +124,6 @@ const SignupsTab = () => {
   if (!event || !signups?.length) {
     return <p>{t('editor.signups.noSignups')}</p>;
   }
-  
 
   return (
     <div>
@@ -140,12 +139,12 @@ const SignupsTab = () => {
       <br />
       <br />
       <Form.Group>
-        <h3>{t("editor.signups.actions")}</h3>
+        <h3>{t('editor.signups.actions')}</h3>
         <Form.Control as="select">
           <option>{t('editor.signups.action.resendConfirmaton')}</option>
         </Form.Control>
         <br />
-        <Button type="button" onClick={onMassAction}>{t("editor.signups.execute")}</Button>
+        <Button type="button" onClick={onMassAction}>{t('editor.signups.execute')}</Button>
       </Form.Group>
       <br />
       <br />
