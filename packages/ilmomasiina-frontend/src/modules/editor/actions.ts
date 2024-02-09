@@ -286,3 +286,15 @@ export const deleteSignup = (id: SignupID) => async (dispatch: DispatchAction, g
     return false;
   }
 };
+
+export const resendConfirmationEmails = (ids: SignupID[]) => async (dispatch: DispatchAction, getState: GetState) => {
+  const { accessToken } = getState().auth;
+
+  await adminApiFetch('admin/signups/resend', {
+    accessToken,
+    method: 'POST',
+    body: {
+      ids,
+    },
+  }, dispatch);
+};
