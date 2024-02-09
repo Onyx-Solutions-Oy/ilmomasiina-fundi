@@ -25,6 +25,7 @@ import createSignup from './signups/createNewSignup';
 import { deleteSignupAsAdmin, deleteSignupAsUser } from './signups/deleteSignup';
 import { requireValidEditToken } from './signups/editTokens';
 import getSignupForEdit from './signups/getSignupForEdit';
+import resendConfirmationEmails from './signups/resendConfirmationEmail';
 import updateSignup from './signups/updateSignup';
 
 const errorResponses = {
@@ -192,6 +193,21 @@ async function setupAdminRoutes(
       },
     },
     listUsers,
+  );
+
+  /** Admin routes for user management */
+  server.post(
+    '/signups/resend',
+    {
+      schema: {
+        body: schema.signupResendEmailsBody,
+        response: {
+          ...errorResponses,
+          204: {}
+        },
+      },
+    },
+    resendConfirmationEmails,
   );
 
   server.post<{ Body: schema.UserInviteSchema }>(
